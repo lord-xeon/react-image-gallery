@@ -194,6 +194,9 @@ export default class ImageGallery extends React.Component {
     }
 
     this.setState({isFullscreen: true});
+    if(this.props.onFullScreen){
+      this.props.onFullScreen(true);
+    }
   }
 
   exitFullScreen() {
@@ -212,6 +215,9 @@ export default class ImageGallery extends React.Component {
       }
 
       this.setState({isFullscreen: false});
+      if(this.props.onFullScreen){
+        this.props.onFullScreen(false);
+      }
     }
   }
 
@@ -834,6 +840,7 @@ ImageGallery.propTypes = {
   onImageLoad: React.PropTypes.func,
   onImageError: React.PropTypes.func,
   onThumbnailError: React.PropTypes.func,
+  onFullScreen:React.PropTypes.func,
   renderItem: React.PropTypes.func,
 };
 
